@@ -1,0 +1,58 @@
+{% comment %} {% include "navbar.html" %} {% endcomment %}
+{% extends "main.html" %}
+
+{% block content %}
+
+<style>
+    .room-conatiner{
+        display:grid;
+        grid-template-columns:3fr 1fr;
+    }
+</style>
+
+<div class="room-conatiner">
+    <h1>{{room.name}} </h1>
+    <p>{{room.description}}</p>
+
+    <div class="comment-wrapper">
+        <h3>Conversation</h3>
+        <hr>
+
+
+        {% for message in messages  %}
+            <div>
+                {% if requset.user==message.user %}
+                <a href="{% url 'delete-message' message.id %}">Delete</a>
+                {% endif %}
+                <small>
+                    @{{message.user}} {{message.created|timesince}}
+                    <p>{{message.body}}</p>
+                </small>
+
+            </div>
+        {% endfor %}
+    </div>
+    {% if request.user.is_authenticated %}
+    <div class="comment-form">
+        <form action="" method="post">
+            {% csrf_token %}
+            <input type="text" name="body" id="" placeholder="Write your message here...">
+        </form>
+    </div>
+    {% endif %}
+
+    <div>
+        <h3>Participants</h3>
+        <hr>
+
+        {% for user in participants  %}
+        <div>
+            <p>
+                @{{uesr.username}}
+            </p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

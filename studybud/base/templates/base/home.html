@@ -1,0 +1,25 @@
+{% extends "main.html" %}
+
+{% block content %}
+
+<style>
+    .home-conatiner{
+        display:grid;
+        grid-template-columns: 1fr 3fr 1fr;
+    }
+</style>
+<div class="home-conatiner">
+    <div>
+        {% include "base/topics_component.html" %}
+    </div>
+
+
+    {% include "base/feed_component.html" %}
+
+    <div>
+       {% include "base/activity_component.html" %}
+    </div>
+
+</div>
+{% endblock %}
+
