@@ -16,5 +16,5 @@ A discord like platform where every logged in user can create thier own rooms le
 - Logged in user can create thier own rooms 
 - The authenticated user can make post into other rooms
 - HTML Templating is user to create home page, form sections and room conversations
-- 
+
 
